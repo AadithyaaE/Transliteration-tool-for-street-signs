@@ -173,34 +173,7 @@ Then pick an image → tap **Upload & Transliterate** → test **Play Pronunciat
 
 ---
 
-##  4. API Usage (for testing)
-
-Upload an image manually with `curl`:
-
-```bash
-curl -X POST "http://192.168.31.242:5000/transliterate" \
-  -F "file=@image.jpg" \
-  -F "target_script=latin" \
-  -F "ocr_lang=eng+hin+tam+tel+kan+mal+ben+guj+pan"
-```
-
-Example JSON response:
-
-```json
-{
-  "original_text": "தமிழ் எழுத்து",
-  "transliterated_text": "tamil eḻuttu",
-  "detected_script": "tamil",
-  "target_script": "latin",
-  "langCode": "ta",
-  "audio_url": "http://192.168.31.242:5000/audio/tts_12345.mp3",
-  "error": ""
-}
-```
-
----
-
-##  5. Troubleshooting
+##  4. Troubleshooting
 
 ###  “Upload failed” or “Server error 500”
 
@@ -242,7 +215,7 @@ project-root/
 
 ---
 
-##  6. Technology Stack
+##  5. Technology Stack
 
 | Component        | Technology                       | Description                   |
 | ---------------- | -------------------------------- | ----------------------------- |
@@ -255,7 +228,7 @@ project-root/
 
 ---
 
-##  7. Quick Summary
+##  6. Quick Summary
 
 | Step                | Command                                             |
 | ------------------- | --------------------------------------------------- |
