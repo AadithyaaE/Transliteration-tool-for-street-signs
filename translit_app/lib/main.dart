@@ -69,7 +69,7 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
   void initState() {
     super.initState();
     _player.setPlayerMode(PlayerMode.mediaPlayer);
-    // Optional debug listeners
+   
     _player.onPlayerStateChanged.listen((state) {
       debugPrint('player state: $state');
     });
@@ -89,7 +89,7 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
       final XFile? file = await _picker.pickImage(source: src, imageQuality: 90);
       if (file == null) return;
       if (src == ImageSource.camera) {
-        // small delay after camera captures on some devices
+       
         await Future.delayed(const Duration(milliseconds: 400));
       }
       setState(() {
@@ -159,7 +159,6 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
     }
   }
 
-  /// Robust playback: try streaming first, then fallback to bytes
   Future<void> _playAudio() async {
     setState(() => _error = '');
 
@@ -197,7 +196,7 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
         debugPrint('streaming error: $e');
       }
 
-      // Fallback: download bytes and play
+     
       final getResp = await http.get(uri).timeout(const Duration(seconds: 20));
       if (getResp.statusCode == 200 && getResp.bodyBytes.isNotEmpty) {
         await _player.stop();
@@ -277,7 +276,6 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
     );
   }
 
-  /// Open full-screen preview with Hero transition
   void _openFullPreview() {
     if (_imageFile == null) return;
     Navigator.of(context).push(MaterialPageRoute(builder: (_) {
@@ -318,7 +316,6 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
           child: Column(children: [
-            // Image preview card — uses BoxFit.contain so entire image is visible
             GestureDetector(
               onTap: _openFullPreview,
               child: AnimatedContainer(
@@ -342,7 +339,7 @@ class _TransliteratorPageState extends State<TransliteratorPage> {
                             child: Center(
                               child: Image.file(
                                 _imageFile!,
-                                fit: BoxFit.contain, // <-- show entire image
+                                fit: BoxFit.contain,
                                 width: double.infinity,
                               ),
                             ),
