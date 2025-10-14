@@ -267,5 +267,3 @@ project-root/
 
 ---
 
-Made with ❤️ using **Python**, **Flutter**, and **Google TTS**
-for transliteration across India’s rich languages. 🇮🇳
